@@ -1,4 +1,4 @@
-const GAME_TIME = 10;
+const GAME_TIME = 2;
 let score = 0;
 let time = GAME_TIME;
 let isPlaying = false;
@@ -22,6 +22,7 @@ function init() {
 function run() {
   image.remove();
   if (isPlaying) return;
+  wordInput.removeAttribute("disabled");
   isPlaying = true;
   time = GAME_TIME;
   timeDisplay.innerText = 0;
@@ -61,6 +62,9 @@ function makeWords() {
 
 function checkStatus() {
   if (!isPlaying && time === 0) {
+    wordDisplay.innerText = "GAME OVER";
+    wordInput.value = "";
+    wordInput.setAttribute("disabled", "");
     buttonChange("게임시작");
     clearInterval(checkInterval);
   }
