@@ -36,10 +36,21 @@ function checkMatch(e) {
   if (e.target.value === wordDisplay.innerText.toLowerCase()) {
     wordInput.value = "";
     if (!isPlaying) return;
-    score++;
+    score += 10;
     time = GAME_TIME;
     scoreDisplay.innerText = score;
     makeWords();
+  }
+
+  const textLength = e.target.value.length;
+  // 매칭 실패시
+  if (e.target.value !== wordDisplay.innerText.slice(0, textLength)) {
+    score--;
+    scoreDisplay.innerText = score;
+    wordDisplay.style.color = "#ff0000";
+    setTimeout(() => {
+      wordDisplay.style.color = "#3b5999";
+    }, 500);
   }
 }
 
@@ -49,7 +60,7 @@ function makeWords() {
 }
 
 function checkStatus() {
-  if (time === 0) {
+  if (!isPlaying && time === 0) {
     buttonChange("게임시작");
     clearInterval(checkInterval);
   }
