@@ -1,4 +1,4 @@
-const GAME_TIME = 2;
+const GAME_TIME = 10;
 let score = 0;
 let time = GAME_TIME;
 let isPlaying = false;
