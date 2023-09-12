@@ -1,4 +1,4 @@
-const GAME_TIME = 9;
+const GAME_TIME = 10;
 let score = 0;
 let time = GAME_TIME;
 let isPlaying = false;
@@ -11,6 +11,7 @@ const wordDisplay = document.querySelector(".word-display");
 const scoreDisplay = document.querySelector(".score");
 const timeDisplay = document.querySelector(".time");
 const button = document.querySelector(".button");
+const image = document.querySelector(".typingImage");
 
 function init() {
   buttonChange("게임로딩중...");
@@ -19,14 +20,16 @@ function init() {
 }
 
 function run() {
+  image.remove();
   if (isPlaying) return;
   isPlaying = true;
   time = GAME_TIME;
-  wordInput.focus();
   timeDisplay.innerText = 0;
+  wordInput.focus();
+  makeWords();
+  buttonChange("게임중");
   timeInterval = setInterval(countDown, 1000);
   checkInterval = setInterval(checkStatus, 50);
-  buttonChange("게임중");
 }
 
 function checkMatch(e) {
@@ -36,9 +39,13 @@ function checkMatch(e) {
     score++;
     time = GAME_TIME;
     scoreDisplay.innerText = score;
-    const randomIndex = Math.floor(Math.random() * words.length);
-    wordDisplay.innerText = words[randomIndex];
+    makeWords();
   }
+}
+
+function makeWords() {
+  const randomIndex = Math.floor(Math.random() * words.length);
+  wordDisplay.innerText = words[randomIndex];
 }
 
 function checkStatus() {

@@ -3,23 +3,36 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>단어 타자연습</title>
     <link rel="stylesheet" href="css/style.css" />
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   </head>
   <body>
     <div class="header">
-      <h1>타이핑 마스터</h1>
+      <h1>단어 타자연습</h1>
     </div>
-    <div class="word-display">Hello</div>
-    <div class="word-input-box">
-      <input type="text" class="word-input" />
+    <div class="contents">
+      <div class="word-display">
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/1804/1804483.png"
+          alt=""
+          width="200"
+          class="typingImage"
+        />
+      </div>
+      <div class="word-input-box">
+        <input type="text" class="word-input" />
+      </div>
+      <div class="game-info">
+        <div>남은시간: <span class="time">0</span>초</div>
+        <div>획득점수: <span class="score">0</span>점</div>
+      </div>
     </div>
-    <div class="game-info">
-      <div>남은시간: <span class="time">0</span>초</div>
-      <div>획득점수: <span class="score">0</span>점</div>
+    <div class="footer">
+      <button class="button loading" onclick="run()">
+        게임을 불러오는중...
+      </button>
     </div>
-    <button class="button loading" onclick="run()">게임을 불러오는중...</button>
     <script src="/js/main.js"></script>
   </body>
 </html>
