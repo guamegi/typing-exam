@@ -8,7 +8,7 @@ body {
   background-color: #3b5999;
 }
 p {
-  font-size: 14px;
+  font-size: 13px;
 }
 .container {
   width: 80vmin;
@@ -84,4 +84,8 @@ textarea {
 .radio-groop {
   float: left;
   margin-top: 40px;
+}
+.info-text {
+  display: inline-block;
+  width: 38px;
 }

@@ -12,13 +12,13 @@
   <body>
     <div class="container">
       <div class="stats">
-        <p>Time: <span id="timer">0</span></p>
-        <p>Mistakes: <span id="mistakes">0</span></p>
-        <p>Accuracy: <span id="accuracy">0 %</span></p>
-        <p>Speed: <span id="wpm">0</span></p>
+        <p>남은시간: <span class="info-text" id="timer">0</span></p>
+        <p>오타횟수: <span class="info-text" id="mistakes">0</span></p>
+        <p>정확도: <span class="info-text" id="accuracy">0 %</span></p>
+        <p>타자속도: <span class="info-text" id="wpm">0</span></p>
       </div>
       <div id="quote" onmousedown="return false" onselectstart="return false">
-        <span class="quote-chars"></span>
+        <span class="quote-chars">loading...</span>
       </div>
       <textarea
         rows="1"
