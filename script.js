@@ -13,33 +13,29 @@ const timeEl = document.querySelector("#timer");
 const DEAULT_WORD_TIME = 10;
 const DEAULT_QUOTE_TIME = 60;
 
-let quote = "";
-let words = [];
+let data = [];
 let seletedTime = DEAULT_WORD_TIME;
 let time = seletedTime;
-let timer = "";
+let timer;
 let mistakes = 0;
 let isPlaying = false;
 
 const getWordData = async () => {
-  const data = await fetch(wordApiUrl).then((res) => res.json());
-  words = data;
-  startBtnEl.innerText = "게임시작";
-  startBtnEl.classList.remove("loading");
-  makeWords();
+  data = await fetch(wordApiUrl).then((res) => res.json());
+  makeRandomData();
+  showStarting();
 };
 
 const getQuoteData = async () => {
   const datas = await fetch(quoteApiUrl).then((res) => res.json());
-  words = datas.map((data) => data.content);
-  startBtnEl.innerText = "게임시작";
-  startBtnEl.classList.remove("loading");
-  makeWords();
+  data = datas.map((data) => data.content);
+  makeRandomData();
+  showStarting();
 };
 
-const makeWords = () => {
-  const randomIndex = Math.floor(Math.random() * words.length);
-  quoteCharsEl.innerText = words[randomIndex];
+const makeRandomData = () => {
+  const randomIndex = Math.floor(Math.random() * data.length);
+  quoteCharsEl.innerText = data[randomIndex];
 };
 
 const updateTimer = () => {
@@ -79,10 +75,13 @@ const reset = () => {
   timeEl.innerText = 0;
   userInputEl.value = "";
   userInputEl.disabled = true;
+  showStarting();
+};
+
+const showStarting = () => {
   startBtnEl.innerText = "게임시작";
   startBtnEl.classList.remove("loading");
 };
-
 const showLoading = () => {
   startBtnEl.innerText = "로딩중";
   startBtnEl.classList.add("loading");
@@ -100,7 +99,7 @@ const start = () => {
   timeReduce();
 };
 
-userInputEl.addEventListener("input", (e) => {
+const checkWordMatch = (e) => {
   if (e.target.value === quoteCharsEl.innerText) {
     displayResult();
     quoteCharsEl.classList.add("success");
@@ -110,7 +109,7 @@ userInputEl.addEventListener("input", (e) => {
     setTimeout(() => {
       time = seletedTime;
       quoteCharsEl.classList.remove("success");
-      makeWords();
+      makeRandomData();
     }, 500);
   }
 
@@ -123,22 +122,26 @@ userInputEl.addEventListener("input", (e) => {
     quoteCharsEl.classList.remove("fail");
   }
   document.querySelector("#mistakes").innerText = mistakes;
-});
+};
+
+const changeRadioButton = (radio) => {
+  showLoading();
+
+  if (radio.value === "word") {
+    getWordData();
+    seletedTime = DEAULT_WORD_TIME;
+  } else if (radio.value === "quote") {
+    getQuoteData();
+    seletedTime = DEAULT_QUOTE_TIME;
+  }
+  reset();
+  time = seletedTime;
+};
+
+userInputEl.addEventListener("input", (e) => checkWordMatch(e));
 
 radiosEl.forEach((radio) =>
-  radio.addEventListener("change", () => {
-    showLoading();
-
-    if (radio.value === "word") {
-      getWordData();
-      seletedTime = DEAULT_WORD_TIME;
-    } else if (radio.value === "quote") {
-      getQuoteData();
-      seletedTime = DEAULT_QUOTE_TIME;
-    }
-    reset();
-    time = seletedTime;
-  })
+  radio.addEventListener("change", () => changeRadioButton(radio))
 );
 
 window.onload = () => {
