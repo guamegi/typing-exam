@@ -1,38 +1,35 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
   <head>
-    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>단어 타자연습</title>
-    <link rel="stylesheet" href="css/style.css" />
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>Typing Test</title>
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="header">
-      <h1>단어 타자연습</h1>
-    </div>
-    <div class="contents">
-      <div class="word-display">
-        <img
-          src="https://cdn-icons-png.flaticon.com/512/1804/1804483.png"
-          alt=""
-          width="200"
-          class="typingImage"
-        />
+    <div class="container">
+      <div class="stats">
+        <p>Time: <span id="timer">0s</span></p>
+        <p>Mistakes: <span id="mistakes">0</span></p>
+        <p>Accuracy: <span id="accuracy"></span></p>
+        <p>Speed: <span id="wpm"></span></p>
       </div>
-      <div class="word-input-box">
-        <input type="text" class="word-input" />
+      <div id="quote" onmousedown="return false" onselectstart="return false">
+        <span class="quote-chars"></span>
       </div>
-      <div class="game-info">
-        <div>남은시간: <span class="time">0</span>초</div>
-        <div>획득점수: <span class="score">0</span>점</div>
-      </div>
+      <textarea
+        rows="3"
+        id="quote-input"
+        placeholder="Type here when the test starts.."
+      ></textarea>
+      <button id="start-test" onclick="start()">Start Test</button>
     </div>
-    <div class="footer">
-      <button class="button loading" onclick="run()">
-        게임을 불러오는중...
-      </button>
-    </div>
-    <script src="js/main.js"></script>
+
+    <script src="script.js"></script>
   </body>
 </html>
