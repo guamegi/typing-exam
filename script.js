@@ -29,6 +29,7 @@ userInput.addEventListener("input", (e) => {
     displayResult();
     quoteChars.classList.add("success");
     userInput.value = "";
+    mistakes = 0;
 
     setTimeout(() => {
       time = DEAULT_TIME;
@@ -40,10 +41,12 @@ userInput.addEventListener("input", (e) => {
   const textLength = e.target.value.length;
   // 매칭 실패시
   if (e.target.value !== quoteChars.innerText.slice(0, textLength)) {
+    mistakes += 1;
     quoteChars.classList.add("fail");
   } else {
     quoteChars.classList.remove("fail");
   }
+  document.querySelector("#mistakes").innerText = mistakes;
 });
 
 function updateTimer() {
