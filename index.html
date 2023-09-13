@@ -27,9 +27,25 @@
         id="quote-input"
         placeholder="입력하세요..."
       ></textarea>
-      <button id="start-test" class="start-button loading" onclick="start()">
-        로딩중...
-      </button>
+      <div class="footer">
+        <span class="radio-groop">
+          <label
+            ><input id="r1" type="radio" name="chk_info" value="word" checked />
+            단어</label
+          >
+          <label
+            ><input
+              id="r2"
+              type="radio"
+              name="chk_info"
+              value="quote"
+            />문장</label
+          >
+        </span>
+        <button id="start-test" class="start-button loading" onclick="start()">
+          로딩중...
+        </button>
+      </div>
     </div>
 
     <script src="script.js"></script>

@@ -78,3 +78,10 @@ textarea {
 .fail {
   color: #e81c4e;
 }
+.footer::after {
+  clear: both;
+}
+.radio-groop {
+  float: left;
+  margin-top: 20px;
+}
