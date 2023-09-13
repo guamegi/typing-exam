@@ -63,7 +63,7 @@ function updateTimer() {
     startBtn.innerText = "게임시작";
     startBtn.classList.remove("loading");
   } else {
-    document.querySelector("#timer").innerText = --time + "s";
+    document.querySelector("#timer").innerText = --time;
   }
 }
 
@@ -75,14 +75,17 @@ const timeReduce = () => {
 const displayResult = () => {
   let timeTaken = 1;
   if (time != 0) {
-    timeTaken = (DEAULT_TIME - time) / 100;
+    timeTaken = (DEAULT_TIME - time) / 60;
   }
-  document.querySelector("#wpm").innerText =
-    (userInput.value.length / 5 / timeTaken).toFixed(2) + " wpm";
-  document.querySelector("#accuracy").innerText =
-    Math.round(
-      ((userInput.value.length - mistakes) / userInput.value.length) * 100
-    ) + " %";
+
+  document.querySelector("#wpm").innerText = (
+    userInput.value.length / timeTaken
+  ).toFixed(0);
+  document.querySelector("#accuracy").innerText = userInput.value.length
+    ? Math.round(
+        ((userInput.value.length - mistakes) / userInput.value.length) * 100
+      )
+    : 0 + " %";
 };
 
 const start = () => {
