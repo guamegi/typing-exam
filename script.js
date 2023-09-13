@@ -63,8 +63,8 @@ const displayResult = () => {
   document.querySelector("#accuracy").innerText = userInputEl.value.length
     ? Math.round(
         ((userInputEl.value.length - mistakes) / userInputEl.value.length) * 100
-      )
-    : 0 + " %";
+      ) + " %"
+    : "0 %";
 };
 
 const reset = () => {
