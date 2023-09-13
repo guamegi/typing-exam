@@ -17,6 +17,8 @@ let isPlaying = false;
 const getData = async () => {
   const data = await fetch(wordApiUrl).then((res) => res.json());
   words = data;
+  startBtn.innerText = "게임시작";
+  startBtn.classList.remove("loading");
   makeWords();
 };
 
