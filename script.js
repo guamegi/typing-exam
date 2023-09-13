@@ -3,6 +3,7 @@ const wordApiUrl = "https://random-word-api.herokuapp.com/word?number=100";
 const quoteSection = document.querySelector("#quote");
 const quoteChars = document.querySelector(".quote-chars");
 const userInput = document.querySelector("#quote-input");
+const startBtn = document.querySelector("#start-test");
 
 const DEAULT_TIME = 10;
 let quote = "";
@@ -53,9 +54,12 @@ function updateTimer() {
   if (time == 0) {
     displayResult();
     clearInterval(timer);
-    userInput.value = "";
+
     isPlaying = false;
+    userInput.value = "";
     userInput.disabled = true;
+    startBtn.innerText = "게임시작";
+    startBtn.classList.remove("loading");
   } else {
     document.querySelector("#timer").innerText = --time + "s";
   }
@@ -85,6 +89,8 @@ const start = () => {
   mistakes = 0;
   timer = "";
   userInput.disabled = false;
+  startBtn.innerText = "게임중";
+  startBtn.classList.add("loading");
   userInput.focus();
   timeReduce();
 };

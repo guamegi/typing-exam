@@ -37,7 +37,7 @@ textarea {
   padding: 10px 5px;
   font-size: 16px;
 }
-button {
+.start-button {
   float: right;
   margin-top: 20px;
   background-color: #3066f6;
@@ -47,6 +47,10 @@ button {
   border-radius: 5px;
   font-size: 18px;
   cursor: pointer;
+}
+.loading {
+  background-color: #ccc;
+  cursor: not-allowed;
 }
 .result {
   margin-top: 40px;
