@@ -1,5 +1,5 @@
 const quoteApiUrl =
-  "https://zenquotes.io/api/quotes";
+  "https://api.quotable.io/quotes/random?limit=50&minLength=80&maxLength=100";
 const wordApiUrl = "https://random-word-api.herokuapp.com/word?number=100";
 
 const quoteCharsEl = document.querySelector(".quote-chars");
@@ -28,7 +28,7 @@ const getWordData = async () => {
 
 const getQuoteData = async () => {
   const datas = await fetch(quoteApiUrl).then((res) => res.json());
-  data = datas.map((data) => data.q);
+  data = datas.map((data) => data.content);
   makeRandomData();
   showStarting();
 };
