@@ -1,5 +1,5 @@
 const quoteApiUrl =
-  "https://api.quotable.io/quotes/random?limit=50&minLength=80&maxLength=100";
+  "https://quoteslate.vercel.app/api/quotes/random?count=10";
 const wordApiUrl = "https://random-word-api.herokuapp.com/word?number=100";
 
 const quoteCharsEl = document.querySelector(".quote-chars");
@@ -28,7 +28,7 @@ const getWordData = async () => {
 
 const getQuoteData = async () => {
   const datas = await fetch(quoteApiUrl).then((res) => res.json());
-  data = datas.map((data) => data.content);
+  data = datas.map((data) => data.quote);
   makeRandomData();
   showStarting();
 };
