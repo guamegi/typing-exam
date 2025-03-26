@@ -1,5 +1,5 @@
 const quoteApiUrl =
-  "https://thingproxy.freeboard.io/fetch/http://api.quotable.io/quotes/random?limit=50&minLength=80&maxLength=100";
+  "https://thingproxy.freeboard.io/fetch/https://api.quotable.io/quotes/random?limit=50&minLength=80&maxLength=100";
 const wordApiUrl = "https://random-word-api.herokuapp.com/word?number=100";
 
 const quoteCharsEl = document.querySelector(".quote-chars");
